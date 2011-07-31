@@ -406,7 +406,11 @@ $.extend($.validator, {
 		},
 
 		hideErrors: function() {
-			this.addWrapper( this.toHide ).hide();
+			if (this.settings.hideErrors) {
+				this.settings.hideErrors.call(this);
+			} else {
+				this.addWrapper( this.toHide ).hide();
+			}
 		},
 
 		valid: function() {
